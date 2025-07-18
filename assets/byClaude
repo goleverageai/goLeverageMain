@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoLeverage - Business Solutions, AI & Real Estate</title>
+    <meta name="description" content="GoLeverage offers cutting-edge business solutions, AI agents, and real estate services in Northern California. Professional website development, digital marketing, and 24/7 AI assistance.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.1s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 10px;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: var(--gradient);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hidden sections for SPA navigation */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Blog styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .blog-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">GoLeverage</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#business" class="nav-link">Business Solutions</a></li>
+                <li><a href="#ai" class="nav-link">Agentic AI</a></li>
+                <li><a href="#realestate" class="nav-link">Real Estate</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Leverage Your Success</h1>
+                <p>Cutting-edge Business Solutions, AI-Powered Innovation, and Premium Real Estate Services</p>
+                <div class="cta-buttons">
+                    <a href="#business" class="btn btn-primary">Explore Solutions</a>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Core Services</h2>
+                    <p>Comprehensive solutions designed to accelerate your business growth and innovation</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Business Solutions</h3>
+                        <p>Complete digital transformation services for modern businesses</p>
+                        <ul class="service-features">
+                            <li>Website Design & Development</li>
+                            <li>Digital Marketing Packages</li>
+                            <li>Proposal Development</li>
+                            <li>Business Development Services</li>
+                        </ul>
+                        <a href="#business" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>Agentic AI</h3>
+                        <p>24/7 AI-powered assistants customized for your domain</p>
+                        <ul class="service-features">
+                            <li>Custom AI Agent Development</li>
+                            <li>24/7 Customer Support</li>
+                            <li>Domain-Specific Training</li>
+                            <li>Seamless Integration</li>
+                        </ul>
+                        <a href="#ai" class="btn btn-primary">Discover AI</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏠</div>
+                        <h3>Real Estate</h3>
+                        <p>Premium real estate services in Northern California</p>
+                        <ul class="service-features">
+                            <li>Home Buying Assistance</li>
+                            <li>Property Selling Services</li>
+                            <li>Market Analysis</li>
+                            <li>MLS & IDX Integration</li>
+                        </ul>
+                        <a href="#realestate" class="btn btn-primary">View Properties</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why Choose GoLeverage?</h2>
+                        <p>We combine cutting-edge technology with proven business strategies to deliver exceptional results. Our team of experts is dedicated to helping you achieve your goals through innovative solutions.</p>
+                        <p>From digital transformation to AI implementation and real estate excellence, we provide comprehensive services that drive growth and success.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <h3>100+</h3>
+                                <p>Projects Completed</p>
+                            </div>
+                            <div class="stat">
+                                <h3>50+</h3>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div class="stat">
+                                <h3>24/7</h3>
+                                <p>Support Available</p>
+                            </div>
+                            <div class="stat">
+                                <h3>98%</h3>
+                                <p>Client Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center;">
+                            Professional Team<br>Working Together
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Business Solutions Page -->
+    <div id="business" class="page-section">
+        <section class="hero" style="height: 60vh; background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);">
+            <div class="hero-content">
+                <h1>Business Solutions</h1>
+                <p>Comprehensive digital services to transform and grow your business</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Business Offerings</h2>
+                    <p>From web development to marketing strategies, we cover all aspects of digital business growth</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Website Design & Development</h3>
+                        <p>Custom websites that convert visitors into customers</p>
+                        <ul class="service-features">
+                            <li>Responsive Design</li>
+                            <li>E-commerce Solutions</li>
+                            <li>SEO Optimized</li>
+                            <li>Fast Loading</li>
+                            <li>Mobile-First Approach</li>
+                        </ul>
+                        <p><strong>Starting at $2,999</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📈</div>
+                        <h3>Digital Marketing Packages</h3>
+                        <p>Comprehensive marketing strategies to boost your online presence</p>
+                        <ul class="service-features">
+                            <li>Social Media Marketing</li>
+                            <li>Google Ads Management</li>
+                            <li>Content Marketing</li>
+                            <li>Email Marketing</li>
+                            <li>Analytics & Reporting</li>
+                        </ul>
+                        <p><strong>Starting at $1,999/month</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📋</div>
+                        <h3>Proposal Development</h3>
+                        <p>Professional proposals that win contracts and close deals</p>
+                        <ul class="service-features">
+                            <li>Custom Proposal Design</li>
+                            <li>Competitive Analysis</li>
+                            <li>Pricing Strategy</li>
+                            <li>Visual Presentations</li>
+                            <li>Follow-up Support</li>
+                        </ul>
+                        <p><strong>Starting at $899</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Research & Business Development</h3>
+                        <p>Strategic research and development services for business growth</p>
+                        <ul class="service-features">
+                            <li>Market Research</li>
+                            <li>Competitor Analysis</li>
+                            <li>Business Strategy</li>
+                            <li>Growth Planning</li>
+                            <li>Partnership Development</li>
+                        </ul>
+                        <p><strong>Starting at $1,499</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Latest Business Insights</h2>
+                    <p>Stay updated with the latest trends and strategies in business development</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 15, 2024 • Business Strategy</div>
+                            <h3>10 Digital Marketing Trends for 2024</h3>
+                            <p>Discover the latest digital marketing strategies that are driving business growth this year.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 10, 2024 • Web Development</div>
+                            <h3>The Future of Web Development</h3>
+                            <p>Explore emerging technologies and frameworks shaping the future of web development.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 5, 2024 • Business Growth</div>
+                            <h3>Scaling Your Business in 2024</h3>
+                            <p>Learn proven strategies for scaling your business efficiently and sustainably.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Agentic AI Page -->
+    <div id="ai" class="page-section">
+        <section class="hero" style="height: 60vh; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+            <div class="hero-content">
+                <h1>Agentic AI Solutions</h1>
+                <p>24/7 AI-powered assistants customized for your business needs</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Revolutionary AI Technology</h2>
+                    <p>Transform your customer service and business operations with cutting-edge AI agents</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>Custom AI Agent Development</h3>
+                        <p>Tailored AI agents designed specifically for your industry and use case</p>
+                        <ul class="service-features">
+                            <li>Domain-Specific Training</li>
+                            <li>Natural Language Processing</li>
+                            <li>Multi-Platform Integration</li>
+                            <li>Custom Knowledge Base</li>
+                            <li>Advanced Analytics</li>
+                        </ul>
+                        <p><strong>Starting at $4,999</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>24/7 Customer Support AI</h3>
+                        <p>Never miss a customer inquiry with round-the-clock AI assistance</p>
+                        <ul class="service-features">
+                            <li>Instant Response Times</li>
+                            <li>Multi-Language Support</li>
+                            <li>Escalation Management</li>
+                            <li>CRM Integration</li>
+                            <li>Performance Analytics</li>
+                        </ul>
+                        <p><strong>Starting at $1,999/month</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>AI-Powered Sales Assistant</h3>
+                        <p>Boost your sales with intelligent lead qualification and nurturing</p>
+                        <ul class="service-features">
+                            <li>Lead Qualification</li>
+                            <li>Personalized Recommendations</li>
+                            <li>Follow-up Automation</li>
+                            <li>Sales Analytics</li>
+                            <li>Pipeline Management</li>
+                        </ul>
+                        <p><strong>Starting at $2,999/month</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>AI Integration Services</h3>
+                        <p>Seamlessly integrate AI into your existing business systems</p>
+                        <ul class="service-features">
+                            <li>API Development</li>
+                            <li>System Integration</li>
+                            <li>Data Migration</li>
+                            <li>Training & Support</li>
+                            <li>Ongoing Maintenance</li>
+                        </ul>
+                        <p><strong>Starting at $3,999</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why Choose Our AI Solutions?</h2>
+                        <p>Our AI agents are built using the latest machine learning technologies and are designed to understand your business context, industry terminology, and customer needs.</p>
+                        <p>With advanced natural language processing and continuous learning capabilities, our AI agents become more effective over time, providing increasingly accurate and helpful responses.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <h3>99.9%</h3>
+                                <p>Uptime Guarantee</p>
+                            </div>
+                            <div class="stat">
+                                <h3>< 1s</h3>
+                                <p>Response Time</p>
+                            </div>
+                            <div class="stat">
+                                <h3>24/7</h3>
+                                <p>Availability</p>
+                            </div>
+                            <div class="stat">
+                                <h3>95%</h3>
+                                <p>Accuracy Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center;">
+                            AI-Powered<br>Business Intelligence
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Blog Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>AI Industry Insights</h2>
+                    <p>Stay ahead with the latest developments in artificial intelligence and automation</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #7c3aed, #a855f7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AI Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 20, 2024 • AI Technology</div>
+                            <h3>The Rise of Agentic AI in Business</h3>
+                            <p>How autonomous AI agents are revolutionizing customer service and business operations.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #a855f7, #7c3aed); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AI Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 18, 2024 • Machine Learning</div>
+                            <h3>Implementing AI in Small Businesses</h3>
+                            <p>A practical guide to integrating AI solutions in small and medium-sized enterprises.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #7c3aed, #a855f7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AI Blog Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 15, 2024 • Automation</div>
+                            <h3>Future of Customer Service with AI</h3>
+                            <p>Exploring how AI is transforming customer service and support operations.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Real Estate Page -->
+    <div id="realestate" class="page-section">
+        <section class="hero" style="height: 60vh; background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+            <div class="hero-content">
+                <h1>Northern California Real Estate</h1>
+                <p>Your trusted partner for buying and selling homes in Northern California</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Premium Real Estate Services</h2>
+                    <p>Comprehensive real estate solutions for buyers and sellers in Northern California</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏡</div>
+                        <h3>Home Buying Services</h3>
+                        <p>Find your dream home with our comprehensive buying assistance</p>
+                        <ul class="service-features">
+                            <li>Property Search & Analysis</li>
+                            <li>Market Trend Reports</li>
+                            <li>Negotiation Support</li>
+                            <li>Inspection Coordination</li>
+                            <li>Closing Assistance</li>
+                        </ul>
+                        <p><strong>Buyer's Agent Services</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💰</div>
+                        <h3>Home Selling Services</h3>
+                        <p>Maximize your home's value with our proven selling strategies</p>
+                        <ul class="service-features">
+                            <li>Property Valuation</li>
+                            <li>Professional Photography</li>
+                            <li>Marketing Strategy</li>
+                            <li>Open House Coordination</li>
+                            <li>Contract Negotiation</li>
+                        </ul>
+                        <p><strong>Seller's Agent Services</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Market Analysis</h3>
+                        <p>In-depth market insights for informed real estate decisions</p>
+                        <ul class="service-features">
+                            <li>Comparative Market Analysis</li>
+                            <li>Neighborhood Reports</li>
+                            <li>Investment Analysis</li>
+                            <li>Price Trend Forecasting</li>
+                            <li>Market Timing Advice</li>
+                        </ul>
+                        <p><strong>Complimentary Analysis</strong></p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔍</div>
+                        <h3>Property Listings</h3>
+                        <p>Access to comprehensive MLS and IDX property listings</p>
+                        <ul class="service-features">
+                            <li>MLS Integration</li>
+                            <li>IDX Property Search</li>
+                            <li>Real-time Updates</li>
+                            <li>Advanced Filtering</li>
+                            <li>Saved Searches</li>
+                        </ul>
+                        <p><strong>Coming Soon</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Areas Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Serving Northern California</h2>
+                        <p>With deep knowledge of Northern California's diverse real estate markets, we provide expert guidance across multiple counties and communities.</p>
+                        <p>From the bustling Silicon Valley to the scenic wine country, we understand the unique characteristics of each market and help you make informed decisions.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <h3>15+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="stat">
+                                <h3>500+</h3>
+                                <p>Homes Sold</p>
+                            </div>
+                            <div class="stat">
+                                <h3>50+</h3>
+                                <p>Cities Served</p>
+                            </div>
+                            <div class="stat">
+                                <h3>$2B+</h3>
+                                <p>Sales Volume</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center;">
+                            Beautiful Northern<br>California Properties
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Estate Blog Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Real Estate Market Updates</h2>
+                    <p>Stay informed with the latest market trends and insights from Northern California</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #059669, #10b981); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Real Estate Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 25, 2024 • Market Analysis</div>
+                            <h3>Bay Area Housing Market Trends 2024</h3>
+                            <p>Comprehensive analysis of current market conditions and future outlook for Bay Area real estate.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Real Estate Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 22, 2024 • Home Buying</div>
+                            <h3>First-Time Buyer's Guide to Northern California</h3>
+                            <p>Essential tips and strategies for first-time home buyers in the Northern California market.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #059669, #10b981); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Real Estate Image</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">March 20, 2024 • Investment</div>
+                            <h3>Real Estate Investment Opportunities</h3>
+                            <p>Identifying lucrative investment opportunities in Northern California's real estate market.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to leverage your success? Contact us today to discuss your project</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Interest *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="business">Business Solutions</option>
+                                    <option value="ai">Agentic AI</option>
+                                    <option value="realestate">Real Estate</option>
+                                    <option value="consultation">General Consultation</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">Project Budget</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-10k">$5,000 - $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="50k-plus">$50,000+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project or needs..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📍</div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Northern California<br>Serving Bay Area & Beyond</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📞</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">✉️</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@goleverage.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">⏰</div>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                Saturday: 10:00 AM - 4:00 PM<br>
+                                Sunday: By Appointment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoLeverage</h3>
+                    <p>Empowering businesses with cutting-edge solutions, AI technology, and premium real estate services in Northern California.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#business">Business Solutions</a></li>
+                        <li><a href="#ai">Agentic AI</a></li>
+                        <li><a href="#realestate">Real Estate</a></li>
+                        <li><a href="#contact">Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#home">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GoLeverage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Single Page Application Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSection = document.querySelectorAll('.page-section');
+
+        function showPage(pageId) {
+            // Hide all pages
+            pageSection.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`[href="#${pageId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Close mobile menu
+            navMenu.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navigation event listeners
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                const pageId = href.substring(1); // Remove #
+                showPage(pageId);
+            });
+        });
+
+        // CTA buttons navigation
+        document.querySelectorAll('.btn[href^="#"]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = button.getAttribute('href');
+                const pageId = href.substring(1);
+                showPage(pageId);
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple form validation
+            if (!data.name || !data.email || !data.service || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            e.target.reset();
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) {
+                    const pageId = href.substring(1);
+                    if (document.getElementById(pageId)) {
+                        e.preventDefault();
+                        showPage(pageId);
+                    }
+                }
+            });
+        });
+
+        // Initialize page based on URL hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const pageId = hash.substring(1);
+                if (document.getElementById(pageId)) {
+                    showPage(pageId);
+                }
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.service-card, .blog-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
